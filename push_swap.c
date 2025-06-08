@@ -16,6 +16,8 @@
 int	main(int argc, char **argv)
 {
 	char	*c;
+    char    **sp;
+    int     *arr;
 
 	if (argc <= 1)
 	{
@@ -23,10 +25,17 @@ int	main(int argc, char **argv)
 		return (1);
 	}
     if (argc >= 2)
-    {
         c = one_arg(argv);
+    if(error_check(c) == 0)
+    {
+        sp = ft_split(c, ' ');
+        arr=spl_atol(sp);
+        printf("%d\n",arr[2]);
+        free_split(sp);
+        free(arr);
     }
-    printf("%s\n",c);
+    else if(error_check(c) == 1)
+        printf("Error\n");
     free(c);
     return(0);
 }
