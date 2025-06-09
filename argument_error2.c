@@ -2,8 +2,8 @@
 
 static long	ft_atol(const char *str)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	long	k;
 
 	i = 0;
@@ -26,23 +26,64 @@ static long	ft_atol(const char *str)
 	return (k);
 }
 
-int *spl_atol(char  **spl)
+long	*spl_atol(char	**spl,int	count)
 {
-    int i;
-    int count;
-    int *arr;
+	int			i;
+	long		*arr;
 
-    i = 0;
-    count = 0;
-    while(spl[count])
-    {
-        count++;
-    }
-    arr = malloc(sizeof(long) * count);
-    while(spl[i])
-    {
-        arr[i] = ft_atol(spl[i]);
-        i++;
-    }
-    return(arr);
+	i = 0;
+	arr = malloc(sizeof(long) * count);
+	while (spl[i])
+	{
+		arr[i] = ft_atol(spl[i]);
+		i++;
+	}
+	return (arr);
+}
+
+int	stack_error(long	*arr, int count)
+{
+	if (max_min(arr,count) == 1)
+		return (1);
+	if (dup_error(arr,count) == 1)
+		return (1);
+	return (0);
+}
+
+int	max_min(long	*arr,int	count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		printf("%ld i max\n",arr[i]);
+		if (arr[i] > INT_MAX || arr[i] < INT_MIN)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+int	dup_error(long	*arr,int	count)
+{
+	int	i;
+	int	j;
+	
+	i = 0;
+	while (i < count - 1)
+	{
+		printf("%ld i\n",arr[i]);
+		j = i + 1;
+		while (j < count)
+		{
+			printf("%ld j\n",arr[j]);
+			if (arr[i] == arr [j])
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+
 }
