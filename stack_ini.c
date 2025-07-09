@@ -1,38 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   stack_ini.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wlwin <wlwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/04 14:11:23 by wlwin             #+#    #+#             */
-/*   Updated: 2025/06/09 14:13:42 by wlwin            ###   ########.fr       */
+/*   Created: 2025/06/09 13:31:50 by wlwin             #+#    #+#             */
+/*   Updated: 2025/06/09 15:09:25 by wlwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "push_swap.h"
 
-int	main(int argc, char **argv)
+int     counter(char    **spl)
 {
-	char	*c;
-    char    **sp;
+    int c;
 
-	if (argc <= 1)
-	{
-		printf("Error\n");
-		return (1);
-	}
-    if (argc >= 2)
-        c = one_arg(argv);
-    if(error_check(c) == 0)
+    c = 0;
+    while (spl[c])
+        c++;
+    return(c);
+    
+}
+
+void    stack_ini(char   **spl)
+{
+    int     i;
+    int     count;
+    long    *arr;
+    
+    count = counter(spl);
+    i = 0;
+    arr = spl_atol(spl ,count);
+    if (stack_error(arr, count) == 1)
     {
-        sp = ft_split(c, ' ');
-        stack_ini(sp);
-        free_split(sp);
-    }
-    else if(error_check(c) == 1)
         printf("Error\n");
-    free(c);
-    return(0);
+    }
+    free(arr);
 }
