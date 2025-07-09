@@ -15,6 +15,11 @@
 
 int	main(int argc, char **argv)
 {
+    t_stack_node	*a;
+    t_stack_node	*b;
+
+    a = NULL;
+    b = NULL;
 	char	*c;
     char    **sp;
 
@@ -28,11 +33,18 @@ int	main(int argc, char **argv)
     if(error_check(c) == 0)
     {
         sp = ft_split(c, ' ');
-        stack_ini(sp);
+        stack_ini(&a, sp);
         free_split(sp);
     }
     else if(error_check(c) == 1)
         printf("Error\n");
+    if (!sorted(a))
+	{
+        sorting(a,b);
+    }
+    else
+        printf("The stack is sorted\n");
+    free_stack(&a);
     free(c);
     return(0);
 }

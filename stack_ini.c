@@ -23,7 +23,7 @@ int     counter(char    **spl)
     
 }
 
-void    stack_ini(char   **spl)
+void    stack_ini(t_stack_node **stack,char   **spl)
 {
     int     i;
     int     count;
@@ -36,5 +36,44 @@ void    stack_ini(char   **spl)
     {
         printf("Error\n");
     }
+    tack(stack, arr, count);
     free(arr);
+}
+
+void tack(t_stack_node **stack, long   *arr, int count)
+{
+    int i;
+
+    i = 0;
+    while (i < count)
+    {
+        to_node(stack,(int)arr[i]);
+        i++;
+    }
+}
+
+void to_node(t_stack_node    **stack,int l)
+{
+    t_stack_node	*node;
+    t_stack_node	*last_node;
+
+    if (!stack)
+		return ;
+    node = malloc(sizeof(t_stack_node));
+    if (!node)
+		return ;
+    node->next = NULL;
+    node->nbr = l;
+    node->cost_eff = 0;
+    if (!(*stack))
+    {
+		*stack = node;
+        node->prev = NULL;
+    }
+    else
+    {
+        last_node = last_one(*stack);
+        last_node->next = node;
+        node->prev = last_node;
+    }
 }

@@ -57,7 +57,6 @@ int	max_min(long	*arr,int	count)
 	i = 0;
 	while (i < count)
 	{
-		printf("%ld i max\n",arr[i]);
 		if (arr[i] > INT_MAX || arr[i] < INT_MIN)
 			return (1);
 		i++;
@@ -72,12 +71,10 @@ int	dup_error(long	*arr,int	count)
 	
 	i = 0;
 	while (i < count - 1)
-	{
-		printf("%ld i\n",arr[i]);
+	{;
 		j = i + 1;
 		while (j < count)
 		{
-			printf("%ld j\n",arr[j]);
 			if (arr[i] == arr [j])
 				return (1);
 			j++;
