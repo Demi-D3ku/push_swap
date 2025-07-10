@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wlwin <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: wlwin <wlwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/26 13:51:07 by wlwin             #+#    #+#             */
-/*   Updated: 2024/08/31 14:37:23 by wlwin            ###   ########.fr       */
+/*   Created: 2024/09/18 15:33:57 by wlwin             #+#    #+#             */
+/*   Updated: 2024/09/19 13:19:16 by wlwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-char	*ft_strchr(const char *s, int c)
+int	ft_putstr(char *c)
 {
-	while (*s != (unsigned char)c && *s != '\0')
-		s++;
-	if (*s == (unsigned char)c)
-		return ((char *)s);
-	return (0);
+	int	i;
+
+	i = 0;
+	if (c == 0)
+	{
+		write (1, "(null)", 6);
+		return (6);
+	}
+	while (c[i] != 0)
+	{
+		ft_putchar(c[i]);
+		i++;
+	}
+	return (i);
 }

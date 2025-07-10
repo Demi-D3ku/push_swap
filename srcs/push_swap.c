@@ -25,26 +25,19 @@ int	main(int argc, char **argv)
 
 	if (argc <= 1)
 	{
-		printf("Error\n");
+		ft_printf("Error\n");
 		return (1);
 	}
     if (argc >= 2)
         c = one_arg(argv);
-    if(error_check(c) == 0)
+    if(error_check(c) == 1)
+        ft_printf("Error\n");
+    else if(error_check(c) == 0)
     {
         sp = ft_split(c, ' ');
-        stack_ini(&a, sp);
+        stack_ini_sort(a, b, sp);
         free_split(sp);
     }
-    else if(error_check(c) == 1)
-        printf("Error\n");
-    if (!sorted(a))
-	{
-        sorting(a,b);
-    }
-    else
-        printf("The stack is sorted\n");
-    free_stack(&a);
     free(c);
     return(0);
 }

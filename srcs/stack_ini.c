@@ -23,20 +23,25 @@ int     counter(char    **spl)
     
 }
 
-void    stack_ini(t_stack_node **stack,char   **spl)
+void    stack_ini_sort(t_stack_node *a,t_stack_node *b, char   **spl)
 {
-    int     i;
     int     count;
     long    *arr;
     
     count = counter(spl);
-    i = 0;
     arr = spl_atol(spl ,count);
     if (stack_error(arr, count) == 1)
     {
         printf("Error\n");
     }
-    tack(stack, arr, count);
+    else
+    {
+        tack(&a, arr, count);
+        if (!sorted(a))
+            sorting(a,b);
+        else
+            free_stack(&a);
+    }
     free(arr);
 }
 
@@ -76,4 +81,27 @@ void to_node(t_stack_node    **stack,int l)
         last_node->next = node;
         node->prev = last_node;
     }
+}
+
+void	prep_for_push(t_stack_node **stack,
+						t_stack_node *top_node,
+						char stack_name)
+{
+	while (*stack != top_node)
+	{
+		if (stack_name == 'a')
+        {
+			if (top_node->above_middle)
+				ra(stack);
+			else
+				rra(stack);
+		}
+		else if (stack_name == 'b')
+		{
+			if (top_node->above_middle)
+				rb(stack);
+			else
+				rrb(stack);
+		}	
+	}
 }

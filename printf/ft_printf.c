@@ -1,29 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wlwin <wlwin@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 16:11:48 by wlwin             #+#    #+#             */
-/*   Updated: 2025/06/04 14:43:28 by wlwin            ###   ########.fr       */
+/*   Created: 2024/09/10 22:35:15 by wlwin             #+#    #+#             */
+/*   Updated: 2024/09/19 13:18:04 by wlwin            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ft_printf.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+int	ft_printf(const char *format, ...)
 {
-	char	*new_str;
-	size_t	s1_len;
-	size_t	total_len;
+	int		c;
+	va_list	arg;
+	int		j;
 
-	s1_len = ft_strlen(s1) + 1;
-	total_len = ft_strlen(s2) + s1_len;
-	new_str = (char *)malloc(total_len * sizeof(char));
-	if (!new_str)
-		return (NULL);
-	ft_strlcpy(new_str, s1, s1_len);
-	ft_strlcat(new_str, s2, total_len);
-	return (new_str);
+	c = 0;
+	j = 0;
+	if (!format)
+		return (-1);
+	va_start (arg, format);
+	while (format[j] != '\0')
+	{
+		if (format[j] == '%')
+		{
+			c = c + ft_check(format[j + 1], arg);
+			j++;
+		}
+		else
+			c = c + ft_putchar(format[j]);
+		j++;
+	}
+	va_end (arg);
+	return (c);
 }
