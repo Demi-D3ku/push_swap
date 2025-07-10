@@ -24,10 +24,7 @@ int	main(int argc, char **argv)
     char    **sp;
 
 	if (argc <= 1)
-	{
-		ft_printf("Error\n");
 		return (1);
-	}
     if (argc >= 2)
         c = one_arg(argv);
     if(error_check(c) == 1)

@@ -18,11 +18,11 @@ void	sort_three(t_stack_node **a)
 
 	max_node = maximum_stack(*a);
 	if (max_node == *a)
-		printf("ra\n");
+		ra(a);
 	else if ((*a)->next == max_node)
-		printf("rra\n");
+		rra(a);
 	if ((*a)->nbr > (*a)->next->nbr)
-		printf("sa\n");
+		sa(a);
 }
 
 bool	sorted(t_stack_node *stack)
