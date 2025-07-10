@@ -12,75 +12,74 @@
 
 #include "push_swap.h"
 
-int     counter(char    **spl)
+int	counter(char	**spl)
 {
-    int c;
+	int	c;
 
-    c = 0;
-    while (spl[c])
-        c++;
-    return(c);
-    
+	c = 0;
+	while (spl[c])
+		c++;
+	return (c);
 }
 
-void    stack_ini_sort(t_stack_node *a,t_stack_node *b, char   **spl)
+void	stack_ini_sort(t_stack_node *a, t_stack_node *b, char	**spl)
 {
-    int     count;
-    long    *arr;
-    
-    count = counter(spl);
-    arr = spl_atol(spl ,count);
-    if (stack_error(arr, count) == 1)
-    {
-        printf("Error\n");
-    }
-    else
-    {
-        tack(&a, arr, count);
-        if (!sorted(a))
-            sorting(a,b);
-        else
-            free_stack(&a);
-    }
-    free(arr);
+	int		count;
+	long	*arr;
+
+	count = counter(spl);
+	arr = spl_atol(spl, count);
+	if (stack_error(arr, count) == 1)
+	{
+		ft_printf ("Error\n");
+	}
+	else
+	{
+		tack(&a, arr, count);
+		if (!sorted(a))
+			sorting(a, b);
+		else
+			free_stack(&a);
+	}
+	free(arr);
 }
 
-void tack(t_stack_node **stack, long   *arr, int count)
+void	tack(t_stack_node **stack, long	*arr, int count)
 {
-    int i;
+	int	i;
 
-    i = 0;
-    while (i < count)
-    {
-        to_node(stack,(int)arr[i]);
-        i++;
-    }
+	i = 0;
+	while (i < count)
+	{
+		to_node(stack, (int) arr[i]);
+		i++;
+	}
 }
 
-void to_node(t_stack_node    **stack,int l)
+void	to_node(t_stack_node **stack, int l)
 {
-    t_stack_node	*node;
-    t_stack_node	*last_node;
+	t_stack_node	*node;
+	t_stack_node	*last_node;
 
-    if (!stack)
+	if (!stack)
 		return ;
-    node = malloc(sizeof(t_stack_node));
-    if (!node)
+	node = malloc(sizeof(t_stack_node));
+	if (!node)
 		return ;
-    node->next = NULL;
-    node->nbr = l;
-    node->cost_eff = 0;
-    if (!(*stack))
-    {
+	node->next = NULL;
+	node->nbr = l;
+	node->cost_eff = 0;
+	if (!(*stack))
+	{
 		*stack = node;
-        node->prev = NULL;
-    }
-    else
-    {
-        last_node = last_one(*stack);
-        last_node->next = node;
-        node->prev = last_node;
-    }
+		node->prev = NULL;
+	}
+	else
+	{
+		last_node = last_one(*stack);
+		last_node->next = node;
+		node->prev = last_node;
+	}
 }
 
 void	prep_for_push(t_stack_node **stack,
@@ -90,7 +89,7 @@ void	prep_for_push(t_stack_node **stack,
 	while (*stack != top_node)
 	{
 		if (stack_name == 'a')
-        {
+		{
 			if (top_node->above_middle)
 				ra(stack);
 			else
@@ -102,6 +101,6 @@ void	prep_for_push(t_stack_node **stack,
 				rb(stack);
 			else
 				rrb(stack);
-		}	
+		}
 	}
 }

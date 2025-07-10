@@ -15,26 +15,25 @@
 
 int	main(int argc, char **argv)
 {
-    t_stack_node	*a;
-    t_stack_node	*b;
+	t_stack_node	*a;
+	t_stack_node	*b;
+	char			*c;
+	char			**sp;
 
-    a = NULL;
-    b = NULL;
-	char	*c;
-    char    **sp;
-
+	a = NULL;
+	b = NULL;
 	if (argc <= 1)
 		return (1);
-    if (argc >= 2)
-        c = one_arg(argv);
-    if(error_check(c) == 1)
-        ft_printf("Error\n");
-    else if(error_check(c) == 0)
-    {
-        sp = ft_split(c, ' ');
-        stack_ini_sort(a, b, sp);
-        free_split(sp);
-    }
-    free(c);
-    return(0);
+	if (argc >= 2)
+		c = one_arg(argv);
+	if (error_check(c) == 1)
+		ft_printf("Error\n");
+	else if (error_check(c) == 0)
+	{
+		sp = ft_split(c, ' ');
+		stack_ini_sort(a, b, sp);
+		free_split(sp);
+	}
+	free(c);
+	return (0);
 }

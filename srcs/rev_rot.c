@@ -23,12 +23,12 @@ void	rra(t_stack_node **a)
 void	rrb(t_stack_node **b)
 {
 	rev_rot(b);
-    ft_printf("rrb\n");
+	ft_printf("rrb\n");
 }
 
 void	rrr(t_stack_node **a, t_stack_node **b)
 {
 	rev_rot(a);
 	rev_rot(b);
-    ft_printf("rrr\n");
+	ft_printf("rrr\n");
 }

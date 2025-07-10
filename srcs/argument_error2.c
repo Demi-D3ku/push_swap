@@ -26,7 +26,7 @@ static long	ft_atol(const char *str)
 	return (k);
 }
 
-long	*spl_atol(char	**spl,int	count)
+long	*spl_atol(char	**spl, int count)
 {
 	int			i;
 	long		*arr;
@@ -43,14 +43,14 @@ long	*spl_atol(char	**spl,int	count)
 
 int	stack_error(long	*arr, int count)
 {
-	if (max_min(arr,count) == 1)
+	if (max_min(arr, count) == 1)
 		return (1);
-	if (dup_error(arr,count) == 1)
+	if (dup_error(arr, count) == 1)
 		return (1);
 	return (0);
 }
 
-int	max_min(long	*arr,int	count)
+int	max_min(long	*arr, int count)
 {
 	int	i;
 
@@ -64,14 +64,14 @@ int	max_min(long	*arr,int	count)
 	return (0);
 }
 
-int	dup_error(long	*arr,int	count)
+int	dup_error(long	*arr, int count)
 {
 	int	i;
 	int	j;
-	
+
 	i = 0;
 	while (i < count - 1)
-	{;
+	{
 		j = i + 1;
 		while (j < count)
 		{
@@ -82,5 +82,4 @@ int	dup_error(long	*arr,int	count)
 		i++;
 	}
 	return (0);
-
 }

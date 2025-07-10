@@ -6,13 +6,13 @@ static void	rot(t_stack_node **stack)
 
 	if (!*stack || !(*stack)->next)
 		return ;
-	last_node = last_one(*stack); 
+	last_node = last_one(*stack);
 	last_node->next = *stack;
 	*stack = (*stack)->next;
 	(*stack)->prev = NULL;
 	last_node->next->prev = last_node;
 	last_node->next->next = NULL;
-}		
+}
 
 void	ra(t_stack_node **a)
 {
@@ -23,12 +23,12 @@ void	ra(t_stack_node **a)
 void	rb(t_stack_node **b)
 {
 	rot(b);
-    ft_printf("rb\n");
+	ft_printf("rb\n");
 }
 
 void	rr(t_stack_node **a, t_stack_node **b)
 {
 	rot(a);
 	rot(b);
-    ft_printf("rr\n");
+	ft_printf("rr\n");
 }

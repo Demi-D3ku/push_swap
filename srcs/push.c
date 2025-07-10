@@ -3,6 +3,7 @@
 static void	push(t_stack_node **dst, t_stack_node **src)
 {
 	t_stack_node	*push_node;
+
 	if (!*src)
 		return ;
 	push_node = *src;
@@ -25,7 +26,7 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 
 void	pa(t_stack_node **a, t_stack_node **b)
 {
-	push(a, b); 
+	push(a, b);
 	ft_printf("pa\n");
 }
 

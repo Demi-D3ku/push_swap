@@ -29,5 +29,5 @@ void	ss(t_stack_node **a, t_stack_node **b)
 {
 	swap(a);
 	swap(b);
-    ft_printf("ss\n");
+	ft_printf("ss\n");
 }

@@ -26,11 +26,11 @@ static void	a_to_b(t_stack_node **a, t_stack_node **b)
 {
 	t_stack_node	*cheapest_node;
 
-	cheapest_node = get_cheapest(*a); 
+	cheapest_node = get_cheapest(*a);
 	if (cheapest_node->above_middle
 		&& cheapest_node->target->above_middle)
 		rotate_both(a, b, cheapest_node);
-	else if (!(cheapest_node->above_middle) 
+	else if (!(cheapest_node->above_middle)
 		&& !(cheapest_node->target->above_middle))
 		rev_rotate_both(a, b, cheapest_node);
 	prep_for_push(a, cheapest_node, 'a');
@@ -58,17 +58,17 @@ void	more_than_three(t_stack_node **a, t_stack_node **b)
 		pb(b, a);
 	if (a_count-- > 3 && !sorted(*a))
 		pb(b, a);
-    while (a_count-- > 3 && !sorted(*a))
+	while (a_count-- > 3 && !sorted(*a))
 	{
 		ini_a(*a, *b);
 		a_to_b(a, b);
 	}
-    sort_three(a);
-    while (*b)
+	sort_three(a);
+	while (*b)
 	{
 		ini_b(*a, *b);
 		prep_for_push(a, (*b)->target, 'a');
-		pa(a, b); 
+		pa(a, b);
 	}
 	current_index(*a);
 	min_on_top(a);

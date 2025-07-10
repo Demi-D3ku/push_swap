@@ -1,15 +1,15 @@
 #include "push_swap.h"
 
-void    sorting(t_stack_node *a, t_stack_node *b)
+void	sorting(t_stack_node *a, t_stack_node *b)
 {
-    if (stack_count(a) == 2)
-        sa(&a);
-    else if (stack_count(a) == 3)
-        sort_three (&a);
-    else
-        more_than_three (&a,&b);
-    free_stack(&a);
-    free_stack(&b);
+	if (stack_count(a) == 2)
+		sa(&a);
+	else if (stack_count(a) == 3)
+		sort_three (&a);
+	else
+		more_than_three (&a, &b);
+	free_stack(&a);
+	free_stack(&b);
 }
 
 void	sort_three(t_stack_node **a)
@@ -29,12 +29,12 @@ bool	sorted(t_stack_node *stack)
 {
 	if (!stack)
 		return (1);
-	while (stack->next) 
+	while (stack->next)
 	{
 		if (stack->nbr > stack->next->nbr)
 			return (false);
 		stack = stack->next;
-    }
+	}
 	return (true);
 }
 

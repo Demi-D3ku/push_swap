@@ -2,7 +2,7 @@
 
 t_stack_node	*last_one(t_stack_node *stack)
 {
-    if (!stack)
+	if (!stack)
 		return (NULL);
 	while (stack->next)
 		stack = stack->next;
@@ -13,7 +13,7 @@ int	stack_count(t_stack_node *stack)
 {
 	int	count;
 
-	if (!stack) 
+	if (!stack)
 		return (0);
 	count = 0;
 	while (stack)
@@ -61,5 +61,5 @@ t_stack_node	*minimum_stack(t_stack_node *stack)
 		}
 		stack = stack->next;
 	}
-	return (min_node); 
+	return (min_node);
 }

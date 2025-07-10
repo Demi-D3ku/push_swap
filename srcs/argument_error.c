@@ -23,61 +23,56 @@ char	*one_arg(char	**argv)
 	while (argv[i])
 	{
 		temp = ft_strjoin(c, " ");
-        if (!temp)
-        {
-            free(c);
-            return NULL;
-        }
 		free(c);
+		if (!temp)
+			return (NULL);
 		c = temp;
 		temp = ft_strjoin(c, argv[i]);
-        if(!temp)
-        {
-            free(c);
-            return NULL;
-        }
-        free(c);
-        c = temp;
+		free(c);
+		if (!temp)
+			return (NULL);
+		c = temp;
 		i++;
 	}
 	return (c);
 }
 
-int		error_check(char	*c)
+int	error_check(char	*c)
 {
-	if(valid_check(c) == 1)
+	if (valid_check(c) == 1)
 		return (1);
-	else if(number_check(c) == 1)
+	else if (number_check(c) == 1)
 		return (1);
-	else if(syntax_check(c) == 1)
+	else if (syntax_check(c) == 1)
 		return (1);
 	return (0);
 }
 
-int valid_check(char	*c)
+int	valid_check(char	*c)
 {
 	int	i;
 	int	flag;
 
 	i = 0;
 	flag = 1;
-	while(c[i])
+	while (c[i])
 	{
 		if (c[i] == '+' || c[i] == '-' || (c[i] >= '0' && c[i] <= '9'))
 			flag = 0;
 		i++;
 	}
-	return(flag);
+	return (flag);
 }
 
 int	number_check(char	*c)
 {
 	int	i;
-	
+
 	i = 0;
-	while(c[i])
+	while (c[i])
 	{
-		if (!(c[i] == '+' || c[i] == '-' || (c[i] >= '0' && c[i] <= '9')) && ft_isspace(c[i]) == 0)
+		if (!(c[i] == '+' || c[i] == '-'
+				|| (c[i] >= '0' && c[i] <= '9')) && ft_isspace(c[i]) == 0)
 			return (1);
 		i++;
 	}
@@ -86,19 +81,19 @@ int	number_check(char	*c)
 
 int	syntax_check(char	*c)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(c[i])
+	while (c[i])
 	{
-		if(c[i] == '+' || c[i] == '-')
+		if (c[i] == '+' || c[i] == '-')
 		{
-			if(c[i-1] >= '0' && c[i-1] <= '9')
-				return(1);
-			if (!(c[i+1] >= '0' && c[i+1] <= '9'))
-				return(1);
+			if (c[i - 1] >= '0' && c[i - 1] <= '9')
+				return (1);
+			if (!(c[i + 1] >= '0' && c[i + 1] <= '9'))
+				return (1);
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
